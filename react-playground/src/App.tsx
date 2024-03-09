@@ -1,21 +1,32 @@
-import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
+import { Navbar } from '@/components/navbar/Navbar';
+import { ROUTES } from '@/constants/routes';
+import { useState } from 'react';
 
 function App() {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const handleClick = () => {
+    setIsNavbarOpen((prev) => !prev);
+  };
   return (
     <BrowserRouter>
       <h1>React Playground</h1>
+      <button
+        onClick={handleClick}
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+        }}
+      >
+        {isNavbarOpen ? 'Close' : 'Open'} Navbar
+      </button>
+      {isNavbarOpen && <Navbar />}
       <Routes>
-        <Route
-          path="/micro-state-management/subscription-model"
-          element={<ScreenSubscriptionModel />}
-        />
-        <Route
-          path="/micro-state-management/subscription-model-with-context"
-          element={<ScreenSubscriptionModelWithContext />}
-        />
+        {ROUTES.map((route) => (
+          <Route key={route.path} path={route.path} element={route.element} />
+        ))}
       </Routes>
     </BrowserRouter>
   );
