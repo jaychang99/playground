@@ -2,7 +2,7 @@
 import {
   Component1,
   Component2,
-} from '@/features/micro-state-management/subscription-model/components/Component1';
+} from '@/features/micro-state-management/subscription-model/components/ComponentsWithCallbackSet';
 import {
   ComponentWithUseStore1,
   ComponentWithUseStore2,
