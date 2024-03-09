@@ -12,6 +12,7 @@ export const ScreenSubscriptionModelWithContext = () => {
           <ThemeComponent />
         </ThemeContext.Provider>
       </ThemeContext.Provider>
+      <h2>컨텍스트를 이용한 구독 모델</h2>
     </div>
   );
 };

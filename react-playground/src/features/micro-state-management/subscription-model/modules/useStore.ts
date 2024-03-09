@@ -13,7 +13,7 @@ export const createContainer = <T>(initialState: T) => {
 
   return { getState, setState };
 };
-
+export type Store<T> = CreateStoreReturnType<T>;
 export type CreateStore = typeof createStore;
 type UpdateFunction<T> = (prevState: T) => T;
 type NextState<T> = T | UpdateFunction<T>;
@@ -64,7 +64,7 @@ export const useStore = <T>(
   return [state, store.setState] as const;
 };
 
-type Selector<T, S> = (state: T) => S;
+export type Selector<T, S> = (state: T) => S;
 export const useStoreSelector = <T, S>(
   store: CreateStoreReturnType<T>,
   selector: Selector<T, S>,
