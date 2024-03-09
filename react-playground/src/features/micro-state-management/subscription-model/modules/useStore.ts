@@ -62,3 +62,21 @@ export const useStore = <T>(
 
   return [state, store.setState] as const;
 };
+
+type Selector<T, S> = (state: T) => S;
+export const useStoreSelector = <T, S>(
+  store: CreateStoreReturnType<T>,
+  selector: Selector<T, S>,
+) => {
+  const [state, setState] = useState(selector(store.getState()));
+
+  useEffect(() => {
+    const unsubscribe = store.subscribe(() => {
+      setState(selector(store.getState()));
+    });
+    setState(selector(store.getState()));
+    return unsubscribe;
+  }, [store, selector]);
+
+  return state;
+};

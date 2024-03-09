@@ -7,6 +7,10 @@ import {
   ComponentWithUseStore1,
   ComponentWithUseStore2,
 } from '@/features/micro-state-management/subscription-model/components/ComponentsWithUseStore';
+import {
+  ComponentWithUseStoreSelector1,
+  ComponentWithUseStoreSelector2,
+} from '@/features/micro-state-management/subscription-model/components/ComponentsWithUseStoreSelector';
 import { createContainer } from '@/features/micro-state-management/subscription-model/modules/useStore';
 
 const ScreenSubscriptionModel = () => {
@@ -26,6 +30,9 @@ const ScreenSubscriptionModel = () => {
       <p>useStore 를 사용한 컴포넌트</p>
       <ComponentWithUseStore1 />
       <ComponentWithUseStore2 />
+      <p>useStoreSelector 를 사용한 컴포넌트</p>
+      <ComponentWithUseStoreSelector1 />
+      <ComponentWithUseStoreSelector2 />
     </div>
   );
 };
