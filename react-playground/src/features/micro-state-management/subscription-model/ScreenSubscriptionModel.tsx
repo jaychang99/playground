@@ -1,4 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
+import {
+  Component1,
+  Component2,
+} from '@/features/micro-state-management/subscription-model/components/Component1';
 
 type UpdateFunction<T> = (state: T) => T;
 type NextState<T> = T | UpdateFunction<T>;
@@ -26,6 +30,8 @@ const ScreenSubscriptionModel = () => {
   return (
     <div>
       <button onClick={handleClick}>current count: {getState().count}</button>
+      <Component1 />
+      <Component2 />
     </div>
   );
 };
