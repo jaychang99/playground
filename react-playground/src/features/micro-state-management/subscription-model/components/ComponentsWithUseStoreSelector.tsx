@@ -1,12 +1,16 @@
 import {
   createStore,
   useStoreSelector,
+  useStoreSelectorWithSubscription,
 } from '@/features/micro-state-management/subscription-model/modules/useStore';
 
 const store = createStore({ count1: 0, count2: 0 });
 
 export const ComponentWithUseStoreSelector1 = () => {
-  const state = useStoreSelector(store, (state) => state.count1);
+  const state = useStoreSelectorWithSubscription(
+    store,
+    (state) => state.count1,
+  );
   const increment = () => {
     store.setState((prevState) => ({
       ...prevState,

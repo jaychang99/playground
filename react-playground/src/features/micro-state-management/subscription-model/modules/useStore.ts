@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
+import { useSubscription } from 'use-subscription';
 
 export const createContainer = <T>(initialState: T) => {
   let state = initialState;
@@ -79,4 +80,19 @@ export const useStoreSelector = <T, S>(
   }, [store, selector]);
 
   return state;
+};
+
+export const useStoreSelectorWithSubscription = <T, S>(
+  store: CreateStoreReturnType<T>,
+  selector: Selector<T, S>,
+) => {
+  const subscription = useMemo(
+    () => ({
+      getCurrentValue: () => selector(store.getState()),
+      subscribe: store.subscribe,
+    }),
+    [selector, store],
+  );
+
+  return useSubscription(subscription);
 };
