@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-/**
- * 작동하지 않은 예제
- */
+type SetStateFunction = Dispatch<SetStateAction<number>>;
+
 let count = 1;
+const setStateFunctions = new Set<SetStateFunction>();
 
 export const Component1 = () => {
   const [state, setState] = useState(count);
   const increment = () => {
     {
       count += 1;
-      setState(count);
+      setStateFunctions.forEach((setState) => setState(count));
     }
   };
+
+  useEffect(() => {
+    setStateFunctions.add(setState);
+    return () => {
+      setStateFunctions.delete(setState);
+    };
+  }, []);
 
   return (
     <div>
@@ -26,9 +33,16 @@ export const Component2 = () => {
   const increment = () => {
     {
       count += 2;
-      setState(count);
+      setStateFunctions.forEach((setState) => setState(count));
     }
   };
+
+  useEffect(() => {
+    setStateFunctions.add(setState);
+    return () => {
+      setStateFunctions.delete(setState);
+    };
+  }, []);
 
   return (
     <div>
