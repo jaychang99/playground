@@ -4,9 +4,6 @@ import {
   Component2,
 } from '@/features/micro-state-management/subscription-model/components/Component1';
 
-type UpdateFunction<T> = (state: T) => T;
-type NextState<T> = T | UpdateFunction<T>;
-
 export const createContainer = <T,>(initialState: T) => {
   let state = initialState;
   const getState = () => state;
@@ -18,6 +15,39 @@ export const createContainer = <T,>(initialState: T) => {
   };
 
   return { getState, setState };
+};
+
+export type CreateStore = typeof createStore;
+type UpdateFunction<T> = (prevState: T) => T;
+type NextState<T> = T | UpdateFunction<T>;
+type Action<T> = T | UpdateFunction<T>;
+type Unsubscribe = () => void;
+type Callback = () => void;
+type CreateStoreReturnType<T> = {
+  getState: () => T;
+  setState: (action: Action<T>) => void;
+  subscribe: (callback: Callback) => Unsubscribe;
+};
+
+export const createStore = <T,>(initialState: T): CreateStoreReturnType<T> => {
+  let state = initialState;
+  const callbacks = new Set<Callback>();
+  const getState = () => state;
+  const setState = (action: NextState<T>) => {
+    state =
+      typeof action === 'function'
+        ? (action as UpdateFunction<T>)(state)
+        : action;
+    callbacks.forEach((callback) => callback());
+  };
+  const subscribe = (callback: Callback) => {
+    callbacks.add(callback);
+    return () => {
+      callbacks.delete(callback);
+    };
+  };
+
+  return { getState, setState, subscribe };
 };
 
 const ScreenSubscriptionModel = () => {
