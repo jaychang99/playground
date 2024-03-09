@@ -21,7 +21,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({
   children,
 }) => {
   // useRef 는 스토어 객체가 첫 번째 렌더링에서 한 번만 초기화되게 만드는 데 사용된다.
-  const storeRef = useRef<StoreState>(store);
+  const storeRef = useRef<StoreState>();
 
   if (!storeRef.current) {
     storeRef.current = createStore(initialState);
