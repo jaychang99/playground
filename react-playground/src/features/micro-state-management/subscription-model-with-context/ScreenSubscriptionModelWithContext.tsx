@@ -1,3 +1,4 @@
+import { CounterComponent } from '@/features/micro-state-management/subscription-model-with-context/components/CounterComponent';
 import {
   ThemeComponent,
   ThemeContext,
@@ -13,6 +14,7 @@ export const ScreenSubscriptionModelWithContext = () => {
         </ThemeContext.Provider>
       </ThemeContext.Provider>
       <h2>컨텍스트를 이용한 구독 모델</h2>
+      <CounterComponent />
     </div>
   );
 };
