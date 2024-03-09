@@ -13,7 +13,7 @@ import {
 } from '@/features/micro-state-management/subscription-model/components/ComponentsWithUseStoreSelector';
 import { createContainer } from '@/features/micro-state-management/subscription-model/modules/useStore';
 
-const ScreenSubscriptionModel = () => {
+export const ScreenSubscriptionModel = () => {
   const { getState, setState } = createContainer({ count: 0 });
 
   const handleClick = () => {
@@ -36,5 +36,3 @@ const ScreenSubscriptionModel = () => {
     </div>
   );
 };
-
-export default ScreenSubscriptionModel;
