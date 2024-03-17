@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { CountContext } from '@/features/micro-state-management/example-jotai/contexts/CountContext';
+import { useContext } from 'react';
 
 export const Counter2 = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useContext(CountContext);
   const increment = () => setCount((c) => c + 1);
 
   return (
