@@ -8,6 +8,8 @@ export const Counter2 = () => {
   const count2 = useCounterStore(selectCount2);
   const increment2 = useCounterStore(selectIncrement2);
 
+  console.log('<Counter2 /> has been rerendered');
+
   return (
     <div>
       <h2>Counter2</h2>

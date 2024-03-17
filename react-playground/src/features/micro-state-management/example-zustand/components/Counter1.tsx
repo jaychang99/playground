@@ -15,6 +15,8 @@ export const Counter1 = () => {
     useCounterStore.setState((prev) => ({ count1: prev.count1 + 1 }));
   };
 
+  console.log('<Counter1 /> has been rerendered');
+
   return (
     <div>
       <h2>Counter1</h2>
