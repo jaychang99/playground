@@ -37,3 +37,5 @@ console.log(store.getState()); // { count: 1, text: 'world' }
 store.setState({ count: 100 }); // store 는 새 상태와 이전 상태를 병합한다. 따라서 설정하려는 속성만 지정해도 된다. 내부적으로 Object.assign() 을 사용한다.
 
 console.log(store.getState()); // { count: 100, text: 'world' }
+
+export const useStore = create<Store>(() => ({ count: 0, text: 'hello' }));
