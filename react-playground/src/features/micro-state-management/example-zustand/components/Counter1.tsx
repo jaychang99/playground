@@ -1,7 +1,7 @@
 import { useCounterStore } from '@/features/micro-state-management/example-zustand/stores/useCounterStore';
-import { StoreState } from '@/features/micro-state-management/example-zustand/types/StoreState';
+import { Store } from '@/features/micro-state-management/example-zustand/types/StoreState';
 
-const selectCount1 = (state: StoreState) => state.count1;
+const selectCount1 = (state: Store) => state.count1;
 
 export const Counter1 = () => {
   const count1 = useCounterStore(selectCount1);

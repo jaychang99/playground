@@ -1,4 +1,5 @@
 import { Counter1 } from '@/features/micro-state-management/example-zustand/components/Counter1';
+import { Counter2 } from '@/features/micro-state-management/example-zustand/components/Counter2';
 import { useStore } from '@/features/micro-state-management/example-zustand/stores/store';
 
 function ScreenExampleZustand() {
@@ -18,6 +19,7 @@ function ScreenExampleZustand() {
       <p>Count: {count}</p>
       <button onClick={handleClickUpdateText}>Update text</button>
       <Counter1 />
+      <Counter2 />
     </div>
   );
 }
