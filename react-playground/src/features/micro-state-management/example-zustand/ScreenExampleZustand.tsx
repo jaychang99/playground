@@ -1,5 +1,6 @@
 import { Counter1 } from '@/features/micro-state-management/example-zustand/components/Counter1';
 import { Counter2 } from '@/features/micro-state-management/example-zustand/components/Counter2';
+import { TodoSection } from '@/features/micro-state-management/example-zustand/components/TodoSection';
 import { Total } from '@/features/micro-state-management/example-zustand/components/Total';
 import { useStore } from '@/features/micro-state-management/example-zustand/stores/store';
 
@@ -22,6 +23,7 @@ function ScreenExampleZustand() {
       <Counter1 />
       <Counter2 />
       <Total />
+      <TodoSection />
     </div>
   );
 }
