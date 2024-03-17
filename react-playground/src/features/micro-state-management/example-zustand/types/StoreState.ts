@@ -1,6 +1,7 @@
 type StoreState = {
   count1: number;
   count2: number;
+  total: number;
 };
 
 type StoreAction = {

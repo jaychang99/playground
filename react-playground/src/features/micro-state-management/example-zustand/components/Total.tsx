@@ -3,7 +3,7 @@ import { Store } from '@/features/micro-state-management/example-zustand/types/S
 
 // const selectCount1 = (state: Store) => state.count1;
 // const selectCount2 = (state: Store) => state.count2;
-const selectTotal = (state: Store) => state.count1 + state.count2;
+const selectTotal = (state: Store) => state.total;
 
 export const Total = () => {
   // const count1 = useCounterStore(selectCount1);
