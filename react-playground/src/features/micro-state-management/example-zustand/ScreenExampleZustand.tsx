@@ -2,6 +2,7 @@ import { Counter1 } from '@/features/micro-state-management/example-zustand/comp
 import { Counter2 } from '@/features/micro-state-management/example-zustand/components/Counter2';
 import { TodoSection } from '@/features/micro-state-management/example-zustand/components/TodoSection';
 import { Total } from '@/features/micro-state-management/example-zustand/components/Total';
+import { UseStateOptimizationSample } from '@/features/micro-state-management/example-zustand/components/UseStateOptimizationSample';
 import { useStore } from '@/features/micro-state-management/example-zustand/stores/store';
 
 function ScreenExampleZustand() {
@@ -24,6 +25,7 @@ function ScreenExampleZustand() {
       <Counter2 />
       <Total />
       <TodoSection />
+      <UseStateOptimizationSample />
     </div>
   );
 }
