@@ -3,6 +3,7 @@ import {
   Counter1,
   Counter2,
 } from '@/features/micro-state-management/example-valtio/components/Counters';
+import TodoList from '@/features/micro-state-management/example-valtio/components/TodoList';
 
 function ScreenExampleValtio() {
   return (
@@ -11,6 +12,8 @@ function ScreenExampleValtio() {
       {/* <button onClick={() => proxyObject.count++}>Increment</button> */}
       <Counter1 />
       <Counter2 />
+      <h3>TodoList</h3>
+      <TodoList />
     </div>
   );
 }
