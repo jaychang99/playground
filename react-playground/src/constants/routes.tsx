@@ -1,3 +1,4 @@
+import ScreenExampleValtio from '@/features/micro-state-management/example-valtio/ScreenExampleValtio';
 import ScreenExampleZustand from '@/features/micro-state-management/example-zustand/ScreenExampleZustand';
 import { ScreenGlobalStateManagementLibraries } from '@/features/micro-state-management/global-state-management-libraries/ScreenGlobalStateManagementLibraries';
 import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
@@ -29,5 +30,10 @@ export const ROUTES: Route[] = [
     title: '사용 사례 시나리오 1: Zustand',
     path: '/micro-state-management/example-zustand',
     element: <ScreenExampleZustand />,
+  },
+  {
+    title: '사용 사례 시나리오 3: Valtio',
+    path: '/micro-state-management/example-valtio',
+    element: <ScreenExampleValtio />,
   },
 ];
