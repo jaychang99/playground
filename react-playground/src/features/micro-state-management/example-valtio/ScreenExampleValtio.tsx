@@ -11,6 +11,16 @@ console.log('state: ', state); // { count: 0 }, proxy 로 감싼 변경 가능�
 console.log('snap1: ', snap1); // { count: 0 }, Object.freeze() 로 동결되어 변경 불가능한 객체
 console.log('state === snap1: ', state === snap1); // false
 
+++state.count;
+
+const snap2 = snapshot(state);
+
+console.log('state: ', state); // { count: 1 }
+console.log('snap2: ', snap2); // { count: 1 }
+console.log('snap1: ', snap1); // { count: 0 }
+console.log('state === snap2: ', state === snap2); // false
+console.log('snap1 === snap2: ', snap1 === snap2); // false
+
 function ScreenExampleValtio() {
   return (
     <div>
