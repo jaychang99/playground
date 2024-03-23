@@ -19,3 +19,24 @@ console.log('snap2: ', snap2); // { count: 1 }
 console.log('snap1: ', snap1); // { count: 0 }
 console.log('state === snap2: ', state === snap2); // false
 console.log('snap1 === snap2: ', snap1 === snap2); // false
+
+/**
+ * proxy 와 snapshot 함수는 중첩된 객체에 대해서도 작동하며, 스냅숏 생성을 최정화한다.
+ * snapshot 함수는 필요한 경우, 즉 속성이 변경될 때만 새 스냅숏을 생성한다.
+ */
+
+const state2 = proxy({
+  obj1: { count: 0 },
+  obj2: { count: 0 },
+});
+
+const snap21 = snapshot(state2);
+console.log('snap21: ', snap21); // { obj1: { count: 0 }, obj2: { count: 0 } }
+
+++state2.obj1.count;
+
+const snap22 = snapshot(state2);
+console.log('snap21: ', snap21); // { obj1: { count: 0 }, obj2: { count: 0 } }
+console.log('snap22: ', snap22); // { obj1: { count: 1 }, obj2: { count: 0 } }
+console.log('snap21.obj1 === snap22.obj1: ', snap21.obj1 === snap22.obj1); // false
+console.log('snap21.obj2 === snap22.obj2: ', snap21.obj2 === snap22.obj2); // true -> 얘는 메모리 공유 (메모리 최적화)
