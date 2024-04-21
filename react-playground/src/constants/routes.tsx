@@ -2,6 +2,7 @@ import ScreenExampleZustand from '@/features/micro-state-management/example-zust
 import { ScreenGlobalStateManagementLibraries } from '@/features/micro-state-management/global-state-management-libraries/ScreenGlobalStateManagementLibraries';
 import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
 import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
+import ScreenNpmTest from '@/features/react-components-npm/ScreenNpmTest';
 
 type Route = {
   title: string;
@@ -29,5 +30,10 @@ export const ROUTES: Route[] = [
     title: '사용 사례 시나리오 1: Zustand',
     path: '/micro-state-management/example-zustand',
     element: <ScreenExampleZustand />,
+  },
+  {
+    title: 'NPM 테스트',
+    path: '/react-components-npm',
+    element: <ScreenNpmTest />,
   },
 ];
