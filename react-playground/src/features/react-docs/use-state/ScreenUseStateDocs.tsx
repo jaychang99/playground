@@ -1,16 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [minute, setMinute] = useState(60);
+  const [count, setCount] = useState(minute);
 
   const handleClick = () => {
-    setCount(5);
-    console.log(count);
+    setMinute((prev) => prev - 1);
 
-    setCount((prev) => prev + 1);
-    console.log(count);
-
-    setCount(10);
     console.log(count);
   };
 
