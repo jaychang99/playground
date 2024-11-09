@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react';
+import { useEffect, useState } from 'react';
 
 type Listener<TValue> = (value: TValue) => void;
 type Unsubscribe = () => void;
@@ -44,11 +44,23 @@ const myStore: MyStore<User> = {
   },
 };
 
-const subscribe = (callback: () => void) => myStore.subscribe(callback);
-const getSnapshot = () => myStore.getValue();
+// const subscribe = (callback: () => void) => myStore.subscribe(callback);
+// const getSnapshot = () => myStore.getValue();
 
 const ScreenUseSyncExternalStore = () => {
-  const data = useSyncExternalStore<User>(subscribe, getSnapshot);
+  // const data = useSyncExternalStore<User>(subscribe, getSnapshot);
+
+  const [data, setData] = useState<User | undefined>(() => myStore.getValue());
+
+  useEffect(() => {
+    const unsubscribe = myStore.subscribe((value) => {
+      setData(value);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div>
