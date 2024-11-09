@@ -4,6 +4,7 @@ import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-manag
 import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
 import ScreenUseEffectDocs from '@/features/react-docs/use-effect/ScreenUseEffectDocs';
 import ScreenUseStateDocs from '@/features/react-docs/use-state/ScreenUseStateDocs';
+import ScreenUseSyncExternalStore from '@/features/react-docs/use-sync-external-store/ScreenUseSyncExternalStore';
 
 type Route = {
   title: string;
@@ -41,5 +42,10 @@ export const ROUTES: Route[] = [
     title: 'useState 문서 읽기',
     path: '/react-docs/use-state',
     element: <ScreenUseStateDocs />,
+  },
+  {
+    title: 'useSyncExternalStore 문서 읽기',
+    path: '/react-docs/use-sync-external-store',
+    element: <ScreenUseSyncExternalStore />,
   },
 ];
