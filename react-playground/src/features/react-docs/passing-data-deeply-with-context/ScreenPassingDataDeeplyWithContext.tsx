@@ -1,11 +1,26 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const NameContext = createContext('John');
+interface NameContextType {
+  name: string;
+  setName: (name: string) => void;
+}
+
+const NameContext = createContext<NameContextType>({
+  name: 'John',
+  setName: () => {},
+});
 
 const App = () => {
+  const [name, setName] = useState('David');
+
   return (
     <div>
-      <NameContext.Provider value="David">
+      <NameContext.Provider
+        value={{
+          name,
+          setName: (name) => setName(name),
+        }}
+      >
         <ChildComponent />
       </NameContext.Provider>
     </div>
@@ -13,12 +28,27 @@ const App = () => {
 };
 
 const ChildComponent = () => {
-  const name = useContext(NameContext);
+  return (
+    <div>
+      <GrandChildComponent />
+    </div>
+  );
+};
+
+const GrandChildComponent = () => {
+  const { name, setName } = useContext(NameContext);
 
   return (
-    <NameContext.Provider value="Alice">
+    <div>
       <p>{name}</p>
-    </NameContext.Provider>
+      <button
+        onClick={() => {
+          setName('Bob');
+        }}
+      >
+        Bob 으로 이름 변경
+      </button>
+    </div>
   );
 };
 
