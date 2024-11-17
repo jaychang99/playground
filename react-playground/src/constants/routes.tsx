@@ -3,6 +3,7 @@ import { ScreenGlobalStateManagementLibraries } from '@/features/micro-state-man
 import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
 import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
 import ScreenPassingDataDeeplyWithContext from '@/features/react-docs/passing-data-deeply-with-context/ScreenPassingDataDeeplyWithContext';
+import ScreenRespondingToEvents from '@/features/react-docs/responding-to-events/ScreenRespondingToEvents';
 import ScreenUseEffectDocs from '@/features/react-docs/use-effect/ScreenUseEffectDocs';
 import ScreenUseStateDocs from '@/features/react-docs/use-state/ScreenUseStateDocs';
 import ScreenUseSyncExternalStore from '@/features/react-docs/use-sync-external-store/ScreenUseSyncExternalStore';
@@ -53,5 +54,10 @@ export const ROUTES: Route[] = [
     title: 'Passing Data Deeply with Context 문서 읽기',
     path: '/react-docs/passing-data-deeply-with-context',
     element: <ScreenPassingDataDeeplyWithContext />,
+  },
+  {
+    title: 'Responding to Events 문서 읽기',
+    path: '/react-docs/responding-to-events',
+    element: <ScreenRespondingToEvents />,
   },
 ];
