@@ -1,15 +1,13 @@
 import { useState } from 'react';
 
-const initializerForUseState = () => {
-  console.log('hello, world');
-  return 0;
-};
-
 const App = () => {
-  const [count, setCount] = useState(initializerForUseState());
+  const [_, forceUpdate] = useState({});
+
+  let count = 0;
 
   const handleClick = () => {
-    setCount((prevCount) => prevCount + 1);
+    count++;
+    forceUpdate({});
   };
 
   return (
