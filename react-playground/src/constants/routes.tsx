@@ -3,8 +3,10 @@ import { ScreenGlobalStateManagementLibraries } from '@/features/micro-state-man
 import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
 import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
 import ScreenPassingDataDeeplyWithContext from '@/features/react-docs/passing-data-deeply-with-context/ScreenPassingDataDeeplyWithContext';
+import ScreenRenderAndCommit from '@/features/react-docs/render-and-commit/ScreenRenderAndCommit';
 import ScreenRespondingToEvents from '@/features/react-docs/responding-to-events/ScreenRespondingToEvents';
 import ScreenStateAComponentsMemory from '@/features/react-docs/state-a-components-memory/ScreenStateAComponentsMemory';
+import ScreenStateAsASnapshot from '@/features/react-docs/state-as-a-snapshot/ScreenStateAsASnapshot';
 import ScreenUseEffectDocs from '@/features/react-docs/use-effect/ScreenUseEffectDocs';
 import ScreenUseStateDocs from '@/features/react-docs/use-state/ScreenUseStateDocs';
 import ScreenUseSyncExternalStore from '@/features/react-docs/use-sync-external-store/ScreenUseSyncExternalStore';
@@ -65,5 +67,15 @@ export const ROUTES: Route[] = [
     title: "State: A Component's Memory 문서 읽기",
     path: '/react-docs/state-a-components-memory',
     element: <ScreenStateAComponentsMemory />,
+  },
+  {
+    title: 'Render and Commit 문서 읽기',
+    path: '/react-docs/render-and-commit',
+    element: <ScreenRenderAndCommit />,
+  },
+  {
+    title: 'State as a Snapshot 문서 읽기',
+    path: '/react-docs/state-as-a-snapshot',
+    element: <ScreenStateAsASnapshot />,
   },
 ];
