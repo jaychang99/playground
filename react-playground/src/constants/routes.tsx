@@ -3,6 +3,7 @@ import { ScreenGlobalStateManagementLibraries } from '@/features/micro-state-man
 import { ScreenSubscriptionModelWithContext } from '@/features/micro-state-management/subscription-model-with-context/ScreenSubscriptionModelWithContext';
 import { ScreenSubscriptionModel } from '@/features/micro-state-management/subscription-model/ScreenSubscriptionModel';
 import ScreenPassingDataDeeplyWithContext from '@/features/react-docs/passing-data-deeply-with-context/ScreenPassingDataDeeplyWithContext';
+import ScreenQueueingASeriesOfStateUpdates from '@/features/react-docs/queueing-a-series-of-state-updates/ScreenQueueingASeriesOfStateUpdates';
 import ScreenRenderAndCommit from '@/features/react-docs/render-and-commit/ScreenRenderAndCommit';
 import ScreenRespondingToEvents from '@/features/react-docs/responding-to-events/ScreenRespondingToEvents';
 import ScreenStateAComponentsMemory from '@/features/react-docs/state-a-components-memory/ScreenStateAComponentsMemory';
@@ -77,5 +78,10 @@ export const ROUTES: Route[] = [
     title: 'State as a Snapshot 문서 읽기',
     path: '/react-docs/state-as-a-snapshot',
     element: <ScreenStateAsASnapshot />,
+  },
+  {
+    title: 'Queueing a Series of State Updates 문서 읽기',
+    path: '/react-docs/queueing-a-series-of-state-updates',
+    element: <ScreenQueueingASeriesOfStateUpdates />,
   },
 ];
