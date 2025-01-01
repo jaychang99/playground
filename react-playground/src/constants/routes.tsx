@@ -8,6 +8,7 @@ import ScreenRenderAndCommit from '@/features/react-docs/render-and-commit/Scree
 import ScreenRespondingToEvents from '@/features/react-docs/responding-to-events/ScreenRespondingToEvents';
 import ScreenStateAComponentsMemory from '@/features/react-docs/state-a-components-memory/ScreenStateAComponentsMemory';
 import ScreenStateAsASnapshot from '@/features/react-docs/state-as-a-snapshot/ScreenStateAsASnapshot';
+import ScreenUpdatingObjectsInState from '@/features/react-docs/updating-objects-in-state/ScreenUpdatingObjectsInState';
 import ScreenUseEffectDocs from '@/features/react-docs/use-effect/ScreenUseEffectDocs';
 import ScreenUseStateDocs from '@/features/react-docs/use-state/ScreenUseStateDocs';
 import ScreenUseSyncExternalStore from '@/features/react-docs/use-sync-external-store/ScreenUseSyncExternalStore';
@@ -83,5 +84,10 @@ export const ROUTES: Route[] = [
     title: 'Queueing a Series of State Updates 문서 읽기',
     path: '/react-docs/queueing-a-series-of-state-updates',
     element: <ScreenQueueingASeriesOfStateUpdates />,
+  },
+  {
+    title: 'Updating Objects in State 문서 읽기',
+    path: '/react-docs/updating-objects-in-state',
+    element: <ScreenUpdatingObjectsInState />,
   },
 ];
