@@ -3,33 +3,25 @@
 MAIN_CLASS="Example"
 DELAY=1
 
-echo "Watching *.java files for changes..."
+echo "Recursively watching for *.java changes..."
+echo "Main class: $MAIN_CLASS"
 
-# Capture initial file timestamps
-touch .file_times.tmp
-for file in *.java; do
-  echo "$file $(stat -f %m "$file")" >> .file_times.tmp
-done
+# Function to list all *.java files with their modification times
+list_java_files_with_mtime() {
+  find . -name "*.java" -exec stat -f "%N %m" {} \; | sort
+}
+
+# Store initial state
+last_snapshot=$(list_java_files_with_mtime)
 
 while true; do
   sleep "$DELAY"
-  CHANGED=false
+  current_snapshot=$(list_java_files_with_mtime)
 
-  for file in *.java; do
-    [[ -f "$file" ]] || continue
-    NEW_TIME=$(stat -f %m "$file")
-    OLD_TIME=$(grep "^$file " .file_times.tmp | awk '{print $2}')
-    if [[ "$NEW_TIME" != "$OLD_TIME" ]]; then
-      CHANGED=true
-      sed -i '' "/^$file /d" .file_times.tmp
-      echo "$file $NEW_TIME" >> .file_times.tmp
-    fi
-  done
-
-  if $CHANGED; then
+  if [[ "$current_snapshot" != "$last_snapshot" ]]; then
     clear
     echo "Change detected. Compiling..."
-    if javac *.java; then
+    if javac $(find . -name "*.java"); then
       echo "Compilation successful. Running $MAIN_CLASS..."
       echo "=============================="
       java "$MAIN_CLASS"
@@ -37,6 +29,7 @@ while true; do
     else
       echo "Compilation failed."
     fi
+    last_snapshot="$current_snapshot"
     echo "Watching for changes..."
   fi
 done
