@@ -1,30 +1,42 @@
 #!/bin/bash
 
-FILE="Example.java"
-CLASS="Example"
+MAIN_CLASS="Example"
+DELAY=1
 
-echo "Watching $FILE for changes..."
+echo "Watching *.java files for changes..."
 
-# Get initial modified time
-LAST_MODIFIED=$(stat -f %m "$FILE")
+# Capture initial file timestamps
+touch .file_times.tmp
+for file in *.java; do
+  echo "$file $(stat -f %m "$file")" >> .file_times.tmp
+done
 
 while true; do
-  sleep 1
-  NEW_MODIFIED=$(stat -f %m "$FILE")
-  
-  if [[ "$NEW_MODIFIED" != "$LAST_MODIFIED" ]]; then
+  sleep "$DELAY"
+  CHANGED=false
+
+  for file in *.java; do
+    [[ -f "$file" ]] || continue
+    NEW_TIME=$(stat -f %m "$file")
+    OLD_TIME=$(grep "^$file " .file_times.tmp | awk '{print $2}')
+    if [[ "$NEW_TIME" != "$OLD_TIME" ]]; then
+      CHANGED=true
+      sed -i '' "/^$file /d" .file_times.tmp
+      echo "$file $NEW_TIME" >> .file_times.tmp
+    fi
+  done
+
+  if $CHANGED; then
     clear
-    echo "Detected change in $FILE"
-    echo "Compiling..."
-    if javac "$FILE"; then
-      echo "Compilation successful. Running $CLASS..."
+    echo "Change detected. Compiling..."
+    if javac *.java; then
+      echo "Compilation successful. Running $MAIN_CLASS..."
       echo "=============================="
-      java "$CLASS"
+      java "$MAIN_CLASS"
       echo "=============================="
     else
       echo "Compilation failed."
     fi
-    LAST_MODIFIED=$NEW_MODIFIED
-    echo "Waiting for changes..."
+    echo "Watching for changes..."
   fi
 done
